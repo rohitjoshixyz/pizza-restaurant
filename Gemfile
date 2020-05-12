@@ -25,6 +25,10 @@ gem 'pg'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.0'
+end
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
