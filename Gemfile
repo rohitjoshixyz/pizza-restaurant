@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem "haml-rails", '~> 2.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
