@@ -1,0 +1,23 @@
+%h1 Listing toppings
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Veg
+      %th
+      %th
+      %th
+
+  %tbody
+    - @toppings.each do |topping|
+      %tr
+        %td= topping.name
+        %td= topping.veg
+        %td= link_to 'Show', topping
+        %td= link_to 'Edit', edit_topping_path(topping)
+        %td= link_to 'Destroy', topping, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Topping', new_topping_path
