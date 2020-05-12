@@ -8,4 +8,8 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    = render "layouts/navbar"
+    - # Given margin-top of 56px
+    .content.container
+      = yield
+    = render "layouts/footer"
