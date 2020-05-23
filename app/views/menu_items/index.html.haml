@@ -1,0 +1,15 @@
+%table.table.table-bordered
+  - @menu_items.each do |menu_item|
+    %tr
+      %td.width-100= image_tag(url_for(menu_item.photo), alt: menu_item.name, class: 'photo') if menu_item.photo.attached?
+      %td
+        %span.name= menu_item.name
+        %span.size.float-right
+          = render 'size', size: menu_item.size.downcase
+          .category= menu_item.category
+        .description= menu_item.description
+        
+      %td
+        .price
+          <i class="fas fa-rupee-sign"></i>
+          = menu_item.price

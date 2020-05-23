@@ -25,6 +25,8 @@ gem 'pg'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem "haml-rails", '~> 2.0'
+gem 'simple_form'
+gem "cocoon"
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
