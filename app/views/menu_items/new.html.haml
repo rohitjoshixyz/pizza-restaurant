@@ -1,0 +1,23 @@
+= simple_form_for @menu_item do |f|
+  = f.input :name
+  = f.input :description
+  #h3 Toppings
+  #toppings
+    = f.fields_for :toppings do |toppings|
+      = render 'topping_fields', f: toppings
+    .links
+      = link_to_add_association 'Add Topping', f, :toppings
+  = f.input :size, collection: ['Small', 'Medium', 'Large'], prompt: "Select size"
+  = f.input :price, as: :integer
+  = f.input :category, collection: ['Classic']
+  = f.input :photo, as: :file
+  = f.button :submit, class: "btn btn-primary"
+
+:javascript
+  $("p").bind("click", function(){
+    $( "<div>This is a click Event</div>").appendTo( "body" );
+  });
+
+  $("p").bind("dblclick", function(){
+    $( "<div>This is a double-click Event</div>"  ).appendTo( "body" );
+  });

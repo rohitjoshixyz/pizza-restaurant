@@ -1,3 +1,45 @@
 // Place all the styles related to the MenuItem controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.photo {
+  height: 70px;
+  width: 70px;
+}
+.width-100 {
+  width: 100px
+}
+
+table tr td{
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 30px;
+  font-family: 'Fredoka One';
+  color: #795548
+}
+
+.description {
+  font-family: 'Roboto', sans-serif;
+}
+
+.active-size {
+  color: tomato;
+}
+
+.inactive-size {
+  color: wheat;
+}
+
+.price {
+  font-size: 30px;
+  color:#795548;
+}
+
+.category {
+  font-size: 20px;
+  font-family:"Gochi Hand";
+  text-align: center;
+  color: #9E9E9E;
+}
