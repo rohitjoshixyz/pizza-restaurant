@@ -14,5 +14,7 @@
     = render "layouts/navbar"
     - # Given margin-top of 56px
     .content.container
+      - flash.each do |name, message|
+        <div class="alert alert-#{name}">#{message}</div>
       = yield
     = render "layouts/footer"

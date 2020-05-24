@@ -4,8 +4,4 @@
   %hr.my-4
   %p Below is a list of functionality that is working
   %p.lead  
-    = link_to "Add Menu Item", menu_items_url, class: "btn btn-primary"
-  %ul
-    - @menu_items.each do |menu_item|
-      %li 
-        = "#{menu_item.name}: #{menu_item.description}"
+    = link_to "View Menu", menu_items_url, class: "btn btn-primary"

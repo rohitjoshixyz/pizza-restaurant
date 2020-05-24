@@ -1,15 +1,26 @@
-%table.table.table-bordered
+= link_to new_menu_item_path, class: "float-right" do
+  <i class="fas fa-plus" style="font-size:30px"></i>
+%table.table
   - @menu_items.each do |menu_item|
     %tr
-      %td.width-100= image_tag(url_for(menu_item.photo), alt: menu_item.name, class: 'photo') if menu_item.photo.attached?
+      %td.width-100.align-middle= image_tag(url_for(menu_item.photo), alt: menu_item.name, class: 'photo') if menu_item.photo.attached?
       %td
-        %span.name= menu_item.name
+        %span.name
+          = menu_item.name
+          = render partial: 'veg', locals: {menu_item: menu_item}
         %span.size.float-right
           = render 'size', size: menu_item.size.downcase
           .category= menu_item.category
         .description= menu_item.description
-        
+        - menu_item.toppings.each do |topping|
+          .topping.badge.badge-success{class: ("badge-danger" unless topping.veg)}
+            = topping.name
+      %td.price
+        <i class="fas fa-rupee-sign"></i>
+        = menu_item.price
       %td
-        .price
-          <i class="fas fa-rupee-sign"></i>
-          = menu_item.price
+        = link_to edit_menu_item_path(menu_item) do
+          <i class="fas fa-edit"></i>
+        = link_to menu_item_path(menu_item),  method: :delete, data: { confirm: 'Are you sure?' } do
+          <i class="far fa-trash-alt text-danger"></i>
+

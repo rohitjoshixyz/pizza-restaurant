@@ -1,0 +1,14 @@
+= simple_form_for menu_item do |f|
+  = f.input :name
+  = f.input :description
+  #h3 Toppings
+  #toppings
+    = f.fields_for :toppings do |toppings|
+      = render 'topping_fields', f: toppings
+    .links
+      = link_to_add_association 'Add Topping', f, :toppings, class: "btn btn-info mt-3 mb-3"
+  = f.input :size, collection: ['Small', 'Medium', 'Large'], prompt: "Select size"
+  = f.input :price, as: :integer
+  = f.input :category, data: {autocomplete_source: MenuItem.all.pluck(:category).to_json}
+  = f.input :photo, as: :file, id: "photo-upload"
+  = f.button :submit, class: "btn btn-primary"
