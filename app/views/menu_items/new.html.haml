@@ -6,18 +6,9 @@
     = f.fields_for :toppings do |toppings|
       = render 'topping_fields', f: toppings
     .links
-      = link_to_add_association 'Add Topping', f, :toppings
+      = link_to_add_association 'Add Topping', f, :toppings, class: "btn btn-info mt-3 mb-3"
   = f.input :size, collection: ['Small', 'Medium', 'Large'], prompt: "Select size"
   = f.input :price, as: :integer
-  = f.input :category, collection: ['Classic']
-  = f.input :photo, as: :file
+  = f.input :category, data: {autocomplete_source: MenuItem.all.pluck(:category).to_json}
+  = f.input :photo, as: :file, id: "photo-upload"
   = f.button :submit, class: "btn btn-primary"
-
-:javascript
-  $("p").bind("click", function(){
-    $( "<div>This is a click Event</div>").appendTo( "body" );
-  });
-
-  $("p").bind("dblclick", function(){
-    $( "<div>This is a double-click Event</div>"  ).appendTo( "body" );
-  });

@@ -1,4 +1,7 @@
-.nested-fields
-  = f.text_field :name
-  = f.check_box :veg
-  = link_to_remove_association "Remove", f
+.nested-fields.row
+  = f.text_field :name, class: "form-control col-4 ml-3 mb-3"
+  .col-2.text-center.align-self-center{style:"padding-top: 8px"}
+    = f.label :veg, 'Veg?'
+    = f.check_box :veg, :checked => true
+  = link_to_remove_association f, class:"btn text-danger align-self-center", style: "font-size: 20px" do
+    <i class="far fa-trash-alt"></i>

@@ -9,11 +9,6 @@
   width: 100px
 }
 
-table tr td{
-  border: 2px solid black;
-  border-radius: 10px;
-}
-
 .name {
   font-size: 30px;
   font-family: 'Fredoka One';
@@ -33,8 +28,12 @@ table tr td{
 }
 
 .price {
-  font-size: 30px;
+  font-size: 20px;
   color:#795548;
+  align-self: center;
+  white-space: nowrap;
+  max-width: 100%;
+  vertical-align: middle !important;
 }
 
 .category {
@@ -43,3 +42,22 @@ table tr td{
   text-align: center;
   color: #9E9E9E;
 }
+
+table tr:last-child {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.topping {
+
+}
+
+tr {
+  /* Add shadows to create the "card" effect */
+  //box-shadow: 0 4px 2px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+tr:hover {
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+} 
