@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_212826) do
     t.string "size"
     t.integer "price"
     t.string "category"
-    t.string "photo_url"
+    t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

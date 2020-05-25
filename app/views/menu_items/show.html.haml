@@ -1,7 +1,7 @@
 = render 'crud_nav_menu'
 %table.table
   %tr
-    %td.width-100.align-middle= image_tag(url_for(@menu_item.photo), alt: @menu_item.name, class: 'photo') if @menu_item.photo.attached?
+    %td.width-100.align-middle= image_tag(url_for(@menu_item.photo), alt: @menu_item.name, class: 'photo')
     %td
       %span.name
         = @menu_item.name

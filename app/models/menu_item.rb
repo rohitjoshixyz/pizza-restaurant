@@ -1,5 +1,6 @@
 class MenuItem < ApplicationRecord
   after_save :attach_default_photo
+  #mount_uploader :photo, PhotoUploader
 
   has_many :toppings, :dependent => :destroy
   has_one_attached :photo

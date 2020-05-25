@@ -3,7 +3,7 @@
 %table.table
   - @menu_items.each do |menu_item|
     %tr
-      %td.width-100.align-middle= image_tag(url_for(menu_item.photo), alt: menu_item.name, class: 'photo') if menu_item.photo.attached?
+      %td.width-100.align-middle= image_tag(url_for(menu_item.photo), alt: menu_item.name, class: 'photo')
       %td
         %span.name
           = menu_item.name
@@ -23,4 +23,5 @@
           <i class="fas fa-edit"></i>
         = link_to menu_item_path(menu_item),  method: :delete, data: { confirm: 'Are you sure?' } do
           <i class="far fa-trash-alt text-danger"></i>
+        = link_to "Show", menu_item_path(menu_item)
 

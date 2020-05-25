@@ -1,0 +1,11 @@
+development:
+  cloud_name: "rohit-joshi"
+  api_key: "836581948473893"
+  api_secret: "PCpGQbe4AB0uezHumxzjWsJwZU8"
+
+production:
+  cloud_name: "rohit-joshi"
+  api_key: "836581948473893"
+  api_secret: "PCpGQbe4AB0uezHumxzjWsJwZU8"
+
+# CLOUDINARY_URL=cloudinary://836581948473893:PCpGQbe4AB0uezHumxzjWsJwZU8@rohit-joshi

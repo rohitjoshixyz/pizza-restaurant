@@ -10,5 +10,5 @@
   = f.input :size, collection: ['Small', 'Medium', 'Large'], prompt: "Select size"
   = f.input :price, as: :integer
   = f.input :category, data: {autocomplete_source: MenuItem.all.pluck(:category).to_json}
-  = f.input :photo, as: :file, id: "photo-upload"
+  = f.input :photo, as: :file, direct_upload: true, id: "photo-upload"
   = f.button :submit, class: "btn btn-primary"

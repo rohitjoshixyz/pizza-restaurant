@@ -27,6 +27,8 @@ gem 'jquery-rails'
 gem "haml-rails", '~> 2.0'
 gem 'simple_form'
 gem "cocoon"
+# gem 'carrierwave'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
