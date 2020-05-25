@@ -18,10 +18,8 @@
       %td.price
         <i class="fas fa-rupee-sign"></i>
         = menu_item.price
-      %td
-        = link_to edit_menu_item_path(menu_item) do
-          <i class="fas fa-edit"></i>
-        = link_to menu_item_path(menu_item),  method: :delete, data: { confirm: 'Are you sure?' } do
-          <i class="far fa-trash-alt text-danger"></i>
-        = link_to "Show", menu_item_path(menu_item)
+      %td.item_action_links
+        = render partial: 'item_action_links', locals:{menu_item: menu_item}
+
+
 

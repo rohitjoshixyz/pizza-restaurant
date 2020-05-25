@@ -1,0 +1,6 @@
+= link_to menu_item_path(menu_item), class:"item_action_link", "data-toggle": "tooltip", title: "Show menu item" do
+  <i class="fas fa-pizza-slice text-primary"></i>
+= link_to edit_menu_item_path(menu_item), class:"item_action_link", "data-toggle": "tooltip", title: "Edit menu item" do
+  <i class="fas fa-edit"></i>
+= link_to menu_item_path(menu_item), class:"item_action_link", "data-toggle": "tooltip", title: "Delete menu item", method: :delete, data: { confirm: 'Are you sure?' } do
+  <i class="far fa-trash-alt text-danger"></i>
