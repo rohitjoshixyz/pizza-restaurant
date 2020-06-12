@@ -1,5 +1,6 @@
 class CartItem < ApplicationRecord
     has_one :menu_item
+    belongs_to :cart
 
     def sub_total
       if menu_item.present?
