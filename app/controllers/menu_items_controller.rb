@@ -1,5 +1,5 @@
 class MenuItemsController < ApplicationController
-  before_action :load_menu_item, only: [:edit, :update, :show, :destroy]
+  before_action :load_menu_item, only: %i[edit update show destroy]
 
   def index
     @menu_items = MenuItem.includes(:toppings).all
@@ -16,28 +16,26 @@ class MenuItemsController < ApplicationController
     redirect_to menu_items_path
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @menu_item.update(menu_item_params)
-    flash[:success] = "Menu Item updated successfully"
+    flash[:success] = 'Menu Item updated successfully'
     redirect_to menu_items_path
   end
 
-  def show
-  end
+  def show; end
 
   def destroy
     @menu_item.destroy
-    flash[:info] = "Menu Item deleted successfully"
+    flash[:info] = 'Menu Item deleted successfully'
     redirect_to menu_items_path
   end
 
   private
 
   def menu_item_params
-    params.require(:menu_item).permit(:name, :description, :topping_ids, :size, :price, :category, :photo,:photo_cache, :photo, toppings_attributes: [:id, :name, :veg, :_destroy])
+    params.require(:menu_item).permit(:name, :description, :topping_ids, :size, :price, :category, :photo, :photo_cache, :photo, toppings_attributes: %i[id name veg _destroy])
   end
 
   def load_menu_item

@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "MenuItems", type: :request do
-
+RSpec.describe 'MenuItems', type: :request do
 end
