@@ -24,7 +24,12 @@ class MenuItemsController < ApplicationController
     redirect_to menu_items_path
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @menu_item.attributes}
+    end
+  end
 
   def destroy
     @menu_item.destroy
