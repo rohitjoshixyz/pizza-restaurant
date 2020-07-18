@@ -39,10 +39,12 @@ ActiveRecord::Schema.define(version: 2020_06_12_195653) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.string "comment"
+    t.bigint "cart_id"
+    t.bigint "menu_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cart_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["menu_item_id"], name: "index_cart_items_on_menu_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -60,8 +62,6 @@ ActiveRecord::Schema.define(version: 2020_06_12_195653) do
     t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cart_item_id"
-    t.index ["cart_item_id"], name: "index_menu_items_on_cart_item_id"
   end
 
   create_table "toppings", force: :cascade do |t|
@@ -75,5 +75,5 @@ ActiveRecord::Schema.define(version: 2020_06_12_195653) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
-  add_foreign_key "menu_items", "cart_items"
+  add_foreign_key "cart_items", "menu_items"
 end

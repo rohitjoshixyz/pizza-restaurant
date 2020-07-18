@@ -4,8 +4,9 @@ class CreateCartItems < ActiveRecord::Migration[6.0]
     create_table :cart_items do |t|
       t.integer :quantity, default: 1
       t.string :comment
+      t.belongs_to :cart, foreign_key: true
+      t.references :menu_item, foreign_key: true
       t.timestamps
     end
-    add_reference :menu_items, :cart_item, foreign_key: true
   end
 end
