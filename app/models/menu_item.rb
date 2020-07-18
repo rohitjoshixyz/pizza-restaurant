@@ -11,7 +11,7 @@ class MenuItem < ApplicationRecord
   def attach_default_photo
     unless photo.attached?
       photo.attach(io: File.open('app/assets/images/default_pizza_photo.png'), filename: 'default.png')
-      photo = url_for(photo)
+      # photo = url_for(photo)
     end
   end
 
