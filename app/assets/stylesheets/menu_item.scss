@@ -28,11 +28,10 @@
 }
 
 .price {
-  font-size: 20px;
+  font-size: 25px;
   color:#795548;
   align-self: center;
   white-space: nowrap;
-  max-width: 100%;
   vertical-align: middle !important;
 }
 
@@ -74,4 +73,9 @@ tr:hover {
 
 .item_action_link {
 float: right;
+}
+
+.add_to_cart {
+  align-self: center;
+  vertical-align: middle !important;
 }

@@ -1,0 +1,27 @@
+%span
+  = button_to @cart, method: 'delete', class:"btn btn-danger float-right m-2", "data-toggle": "tooltip", title: "Delete current cart" do
+    <i class="far fa-trash-alt"></i> Delete Cart
+  = link_to menu_items_path, class: "btn btn-primary float-right m-2", "data-toggle": "tooltip", title: "Add More Items" do
+    <i class="fas fa-plus"></i> Add more items
+
+%table.table.text-center
+  %thead
+    %h2= "Your Cart ID: #{@cart.id}"
+    %tr
+      %th= "ID"
+      %th= "Item Name: #{@cart.table}"
+      %th= "Item Quantity"
+      %th= "Item Sub-Total"
+      %th= "Remove Cart Item"
+    %tr
+  %tbody
+    - @cart.cart_items.each do |cart_item|
+      %tr
+        %td= cart_item.id
+        %td= cart_item.menu_item.name
+        %td= cart_item.quantity
+        %td= cart_item.sub_total
+        %td
+          = link_to cart_item_path(cart_item), method:'delete', class:"btn text-danger align-self-center", style: "font-size: 20px" do
+            <i class="far fa-trash-alt"></i>
+%h1= "Your total is ₹ #{@cart.total}" 

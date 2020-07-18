@@ -13,6 +13,7 @@ class MenuItemsController < ApplicationController
   def create
     @menu_item = MenuItem.new(menu_item_params)
     @menu_item.save
+    flash[:success] = 'Menu Item created successfully'
     redirect_to menu_items_path
   end
 
