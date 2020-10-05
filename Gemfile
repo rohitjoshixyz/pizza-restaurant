@@ -29,6 +29,9 @@ gem 'pg'
 gem 'simple_form'
 # gem 'carrierwave'
 gem 'cloudinary'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'

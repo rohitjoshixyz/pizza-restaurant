@@ -1,5 +1,5 @@
 %nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.container
-  %a.navbar-brand.js-scroll-trigger{:href => "/menu_items"}
+  %a.navbar-brand.js-scroll-trigger{:href => "/"}
     = image_tag "Josh.png", {:style => "height:25px;"}
   %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
     Menu
@@ -13,7 +13,22 @@
           Cart
       %li.nav-item
         %a.nav-link.js-scroll-trigger{:href => "/"}  Home
-      %li.nav-item
-        %a.nav-link.js-scroll-trigger{:href => "http://rohit-profile.herokuapp.com", target: "_blank"} About Me
-      %li.nav-item
-        %a.nav-link.js-scroll-trigger{:href => "https://github.com/rohitjoshixyz/pizza-restaurant", target: "_blank"} See Source Code
+      - unless admin_signed_in?
+        %li.nav-item
+          %a.nav-link.js-scroll-trigger{:href => "http://rohit-profile.herokuapp.com", target: "_blank"} About Me
+        %li.nav-item
+          %a.nav-link.js-scroll-trigger{:href => "https://github.com/rohitjoshixyz/pizza-restaurant", target: "_blank"} See Source Code
+      - if admin_signed_in?
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle.js-scroll-trigger{'href':'#', id:'profileDropdown', 'role':'button', 'data-toggle':'dropdown', 'aria-haspopup':'true', 'aria-expanded':'false'}
+            %img.profile-image{'src': "#{current_admin.avatar_url}", 'alt':'Profile Image'}
+            = current_admin.full_name.titleize || "Profile"
+          .dropdown-menu{"aria-labelledby" => "profileDropdown"}
+            %a.dropdown-item{:href => "http://rohit-profile.herokuapp.com", target: "_blank"} About Me
+            %a.dropdown-item{:href => "https://github.com/rohitjoshixyz/pizza-restaurant", target: "_blank"} See Source Code
+            .dropdown-divider
+            = link_to "Sign out", destroy_admin_session_path, class: 'dropdown-item text-danger'
+          
+      - else
+        = link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, class:'btn btn-outline-dark js-scroll-trigger'
+      

@@ -60,4 +60,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.debug_exception_response_format = :api
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = '108879009821-gk3f6msejodr9uiipubqkorta60283p9.apps.googleusercontent.com'
+  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '2Y4SO-9OSFHGNp_ylMShwZMc'
 end
