@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
+  belongs_to :admin 
 
   def add_menu_item(menu_item)
     current_cart_item = cart_items.find_by(menu_item_id: menu_item.id)
@@ -9,6 +10,14 @@ class Cart < ApplicationRecord
       current_cart_item = cart_items.build(menu_item: menu_item)
     end
     current_cart_item
+  end
+
+  def count_menu_items
+    count = 0
+    cart_items.each do |cart_item|
+      count += cart_item.quantity
+    end
+    count
   end
 
   def total

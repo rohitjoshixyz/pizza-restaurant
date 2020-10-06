@@ -3,10 +3,13 @@ module CurrentCart
   private
 
   def set_cart
-    @cart = Cart.find(session[:cart_id])
-    puts 'Fetched cart from session' if @cart
+    if admin_signed_in? and current_admin.cart
+        @cart = current_admin.cart
+    else
+      @cart = Cart.find(session[:cart_id])
+    end
     rescue ActiveRecord::RecordNotFound
-      @cart = Cart.create!
+      @cart = current_admin.create_cart
       session[:cart_id] = @cart.id
     end
 end

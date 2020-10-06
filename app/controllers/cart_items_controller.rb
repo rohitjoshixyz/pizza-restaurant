@@ -12,10 +12,11 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart = Cart.find(session[:cart_id])
+    @cart = current_admin.cart
     @cart_item = @cart.cart_items.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_path(@cart)
+    flash[:info] = 'Item deleted from cart'
+    redirect_to carts_path
   end
 
   private
