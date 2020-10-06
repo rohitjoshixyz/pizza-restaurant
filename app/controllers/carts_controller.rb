@@ -12,10 +12,10 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart.destroy if @cart.id = session[:cart_id]
-    session[:cart_id] = nil
-    flash[:info] = 'Cart was succesfully destroyed'
-    redirect_to menu_items_path
+    @cart = current_admin.cart
+    @cart.cart_items.destroy_all
+    flash[:info] = 'Cart was succesfully cleared'
+    redirect_to cart_path(@cart)
   end
 
   private
