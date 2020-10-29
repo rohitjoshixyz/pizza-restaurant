@@ -1,7 +1,7 @@
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
-  belongs_to :admin 
-
+  belongs_to :admin
+  belongs_to :order, optional: true
   def add_menu_item(menu_item)
     current_cart_item = cart_items.find_by(menu_item_id: menu_item.id)
     if current_cart_item

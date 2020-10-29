@@ -32,6 +32,8 @@ gem 'cloudinary'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
