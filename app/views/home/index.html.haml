@@ -2,6 +2,14 @@
   %h1.display-4 Welcome to Josh Pizzas
   %p.lead This is the Home page. Rohit uses this website for practicing.
   %hr.my-4
-  %p Below is a list of functionality that is working
-  %p.lead  
-    = link_to "View Menu", menu_items_path, class: "btn btn-primary"
+  %p 
+    Below is a list of functionality that is working
+
+    %ul.list-group-flush
+      %li.list-group-item Sign in using google OAuth2
+      %li.list-group-item Add, edit and delete menu items
+      %li.list-group-item View menu card with pizza name, description, size, price and photo
+      %li.list-group-item Button to add to cart and cart functionality
+      %li.list-group-item Remove items from cart, clear cart buttons
+      %li.list-group-item Button to place order
+  = link_to "View Menu", menu_items_path, class: "btn btn-primary"
