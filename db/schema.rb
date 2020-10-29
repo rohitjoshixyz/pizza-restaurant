@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_014926) do
+ActiveRecord::Schema.define(version: 2020_10_10_074610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,17 @@ ActiveRecord::Schema.define(version: 2020_10_06_014926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "admin_id"
+    t.bigint "order_id"
     t.index ["admin_id"], name: "index_carts_on_admin_id"
+    t.index ["order_id"], name: "index_carts_on_order_id"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.string "name"
+    t.decimal "percent", precision: 2, scale: 2
+    t.decimal "amount", precision: 2, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -74,6 +84,16 @@ ActiveRecord::Schema.define(version: 2020_10_06_014926) do
     t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "admin_id"
+    t.decimal "amount", precision: 2, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.string "payment_mode"
+    t.index ["admin_id"], name: "index_orders_on_admin_id"
   end
 
   create_table "toppings", force: :cascade do |t|
@@ -88,5 +108,4 @@ ActiveRecord::Schema.define(version: 2020_10_06_014926) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "menu_items"
-  add_foreign_key "carts", "admins"
 end

@@ -16,7 +16,7 @@ class CartItemsController < ApplicationController
     @cart_item = @cart.cart_items.find(params[:id])
     @cart_item.destroy
     flash[:info] = 'Item deleted from cart'
-    redirect_to carts_path
+    redirect_to @cart
   end
 
   private

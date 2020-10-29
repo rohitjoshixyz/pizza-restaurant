@@ -1,0 +1,18 @@
+%table.table.text-center
+  %thead
+    %h2= "Your Cart ID: #{@cart.id}"
+    %tr
+      %th= "ID"
+      %th= "Item Name: #{@cart.table}"
+      %th= "Item Quantity"
+      %th= "Item Sub-Total"
+      %th= "Remove Cart Item"
+    %tr
+  %tbody
+    - @cart.cart_items.each do |cart_item|
+      %tr.qqq
+        %td= cart_item.id
+        %td= cart_item.menu_item.name
+        %td= cart_item.quantity
+        %td= cart_item.sub_total
+%h1= "Your total is ₹ #{@cart.total}"
