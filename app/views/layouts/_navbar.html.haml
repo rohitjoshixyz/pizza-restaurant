@@ -31,5 +31,5 @@
             = link_to "Sign out", destroy_admin_session_path, class: 'dropdown-item text-danger'
           
       - else
-        = link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, class:'btn btn-outline-dark js-scroll-trigger'
+        = link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post, class:'btn btn-outline-dark js-scroll-trigger'
       

@@ -1,0 +1,16 @@
+%ul
+  - @orders.each do |order|
+    %li.list-group
+      %h3.list-group-item
+        Order ID: 
+        = order.id
+        .float-right
+          Total: ₹
+          = order.total
+      %ul
+        - order.cart_items.each do |cart_item|
+          %li.list-group-item
+            = cart_item.menu_item.name
+            .float-right
+              Quantity:
+              = cart_item.quantity
