@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .photo {
-  height: 70px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
 }
 .width-100 {
   width: 100px
@@ -40,13 +40,20 @@
   font-family:"Gochi Hand";
   text-align: center;
   color: #9E9E9E;
+  word-wrap: normal;
+  max-width: 150px;
+  text-align: center;
+}
+
+.size {
+  color: #5a5757;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  text-align: center;
 }
 
 table tr:last-child {
   border-bottom: 1px solid #dee2e6;
-}
-
-.topping {
 }
 
 .veg-icon {

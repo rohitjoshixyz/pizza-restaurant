@@ -1,5 +1,5 @@
 class Admin < ApplicationRecord
-  has_one :cart
+  belongs_to :cart, optional: true
   has_many :orders
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   

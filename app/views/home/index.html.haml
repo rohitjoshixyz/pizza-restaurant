@@ -1,5 +1,7 @@
 .jumbotron
-  %h1.display-4 Welcome to Josh Pizzas
+  %h1.display-4
+    %img{src: "assets/tieb-logo.png", width: "  200px"}
+    Welcome to The Indi Eternity Bistro
   %p.lead This is the Home page. Rohit uses this website for practicing.
   %hr.my-4
   %p 
@@ -8,8 +10,10 @@
     %ul.list-group-flush
       %li.list-group-item Sign in using google OAuth2
       %li.list-group-item Add, edit and delete menu items
-      %li.list-group-item View menu card with pizza name, description, size, price and photo
+      %li.list-group-item View menu card with pizza name, description, size, price and photos
       %li.list-group-item Button to add to cart and cart functionality
       %li.list-group-item Remove items from cart, clear cart buttons
       %li.list-group-item Button to place order
+      %li.list-group-item Show Orders in descending order
+      %li.list-group-item Add address to order
   = link_to "View Menu", menu_items_path, class: "btn btn-primary"

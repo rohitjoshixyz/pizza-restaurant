@@ -3,13 +3,17 @@
 %table.table
   - @menu_items.each do |menu_item|
     %tr
-      %td.width-100.align-middle= image_tag(url_for(menu_item.photo), alt: menu_item.name, class: 'photo')
+      %td.width-100.align-middle
+        - menu_item.photos.each do |photo|
+          = link_to photo.variant(resize_to_limit: [450, nil]), class: :popup_link, target: :_blank do
+            .div{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}= image_tag(photo.variant(resize_to_limit: [150, nil]), alt: menu_item.name)
       %td
         %span.name
           = menu_item.name
           = render partial: 'veg', locals: {menu_item: menu_item}
         %span.size.float-right
-          = render 'size', size: menu_item.size.downcase
+          -# = render 'size', size: menu_item.size.downcase
+          .size.badge= menu_item.size.upcase
           .category= menu_item.category
         .description= menu_item.description
         - menu_item.toppings.each do |topping|
@@ -24,4 +28,22 @@
       %td.item_action_links
         = render partial: 'item_action_links', locals:{menu_item: menu_item}
 
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Preview Image
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        #popup.text-center
 
+:javascript
+  $(document).ready(function() {
+     $(".popup_link").click(function(e) {
+        e.preventDefault();
+        $("#popup").html( $('<img>').attr('src', this.href) );
+     });
+  });
+
+  

@@ -1,1 +1,16 @@
-= @order.inspect
+%h3
+  Order ID: 
+  = @order.id
+  .float-right
+    Total: ₹
+    = @order.cart.total 
+Email: 
+= @order.admin.email
+
+%ul
+- @order.cart.cart_items.each do |cart_item|
+  %li.list-group-item
+    = cart_item.menu_item.name
+    .float-right
+      Quantity: 
+      = cart_item.quantity

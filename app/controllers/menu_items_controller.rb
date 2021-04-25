@@ -2,7 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :load_menu_item, only: %i[edit update show destroy]
 
   def index
-    @menu_items = MenuItem.includes(:toppings).all
+    @menu_items = MenuItem.includes(:toppings).with_attached_photos.all
   end
 
   def new
@@ -41,7 +41,7 @@ class MenuItemsController < ApplicationController
   private
 
   def menu_item_params
-    params.require(:menu_item).permit(:name, :description, :topping_ids, :size, :price, :category, :photo, :photo_cache, :photo, toppings_attributes: %i[id name veg _destroy])
+    params.require(:menu_item).permit(:name, :description, :topping_ids, :size, :price, :is_veg, :category, :photos => [], toppings_attributes: %i[id name veg _destroy])
   end
 
   def load_menu_item

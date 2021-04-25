@@ -1,5 +1,5 @@
 %span
-  - if menu_item.toppings.pluck(:veg).reduce(true){|result, value| result && value}
+  - if menu_item.is_veg
     = image_tag "veg.png", size:"25x25",  class: "veg-icon"
   - else 
     = image_tag "non-veg.png", size:"25x25",  class: "veg-icon"

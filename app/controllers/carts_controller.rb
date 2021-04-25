@@ -29,12 +29,12 @@ class CartsController < ApplicationController
 
   def place_order
     @cart = current_admin.cart
-    @order = Order.create(cart: @cart, admin: current_admin)
-    current_admin.cart = Cart.new(admin: current_admin)
-    current_admin.save
+    @order = Order.create(cart: @cart, admin: current_admin, address: params[:order]["address"])
+    @cart = Cart.create(admin: current_admin)
+    current_admin.update(cart_id: @cart.id)
     session[:cart_id] = @cart.id
     @cart = Cart.find_by_id(session[:cart_id])
-    redirect_to order_path(@order)
+    redirect_to orders_path
   end
 
   private

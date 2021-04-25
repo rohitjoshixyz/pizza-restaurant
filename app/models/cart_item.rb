@@ -1,7 +1,6 @@
 class CartItem < ApplicationRecord
     belongs_to :menu_item
     belongs_to :cart
-
     def sub_total
       if menu_item.price.present?
         # actual_price = 0

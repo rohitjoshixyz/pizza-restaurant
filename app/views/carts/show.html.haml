@@ -25,4 +25,7 @@
           = link_to cart_item_path(cart_item), method:'delete', class:"btn text-danger align-self-center", style: "font-size: 20px" do
             <i class="far fa-trash-alt"></i>
 %h1= "Your total is ₹ #{@cart.total}"
-= link_to "Place Order", place_order_cart_path(@cart), class:'btn btn-outline-dark'
+
+=  simple_form_for :order, url: place_order_cart_path, method: :post, class: 'form' do |f|
+  = f.input :address
+  = f.submit "Place Order", class:'btn btn-outline-dark'

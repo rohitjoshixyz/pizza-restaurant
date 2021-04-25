@@ -5,12 +5,14 @@ class MenuItem < ApplicationRecord
 
   has_many :toppings, dependent: :destroy
   has_many :cart_items
-  has_one_attached :photo
+  has_many_attached :photos do |attachable|
+    attachable.variant :thumb, resize: "100x100"
+  end
   accepts_nested_attributes_for :toppings, allow_destroy: true
 
   def attach_default_photo
-    unless photo.attached?
-      photo.attach(io: File.open('app/assets/images/default_pizza_photo.png'), filename: 'default.png')
+    unless photos.attached?
+      photos.attach(io: File.open('app/assets/images/default_pizza_photo.png'), filename: 'default.png')
       # photo = url_for(photo)
     end
   end

@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_074610) do
+ActiveRecord::Schema.define(version: 2021_04_25_093809) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_074610) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -36,17 +33,19 @@ ActiveRecord::Schema.define(version: 2020_10_10_074610) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "full_name"
     t.string "uid"
     t.string "avatar_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_admins_on_cart_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
-  create_table "cart_items", force: :cascade do |t|
+  create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.string "comment"
     t.bigint "cart_id"
@@ -57,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_074610) do
     t.index ["menu_item_id"], name: "index_cart_items_on_menu_item_id"
   end
 
-  create_table "carts", force: :cascade do |t|
+  create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "table"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -67,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_074610) do
     t.index ["order_id"], name: "index_carts_on_order_id"
   end
 
-  create_table "charges", force: :cascade do |t|
+  create_table "charges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.decimal "percent", precision: 2, scale: 2
     t.decimal "amount", precision: 2, scale: 2
@@ -75,7 +74,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_074610) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "menu_items", force: :cascade do |t|
+  create_table "menu_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "size"
@@ -84,19 +83,23 @@ ActiveRecord::Schema.define(version: 2020_10_10_074610) do
     t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_veg", default: true
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "admin_id"
     t.decimal "amount", precision: 2, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.string "payment_mode"
+    t.bigint "cart_id"
+    t.text "address"
     t.index ["admin_id"], name: "index_orders_on_admin_id"
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 
-  create_table "toppings", force: :cascade do |t|
+  create_table "toppings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.boolean "veg"
     t.bigint "menu_item_id"

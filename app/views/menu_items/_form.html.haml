@@ -1,6 +1,8 @@
 = simple_form_for menu_item do |f|
   = f.input :name
   = f.input :description
+  = f.label "Is the dish Vegetarian?"
+  = f.check_box :is_veg, checked: f.object.is_veg
   #h3 Toppings
   #toppings
     = f.fields_for :toppings do |toppings|
@@ -10,6 +12,10 @@
   = f.input :size, collection: ['Small', 'Medium', 'Large'], prompt: "Select size"
   = f.input :price, as: :integer
   = f.input :category, data: {autocomplete_source: MenuItem.all.pluck(:category).to_json}
-  = image_tag(f.object.photo, size: 150, style:"border: 1px solid grey") if f.object.photo.attached?
-  = f.input :photo, as: :file, direct_upload: true, id: "photo-upload"
+  - if f.object.photos.attached?
+    - f.object.photos.each do |photo|
+      = image_tag(photo, size: 150, style:"border: 1px solid grey")
+  %br
+  .m-2= f.file_field :photos, as: :file, direct_upload: true, multiple: true, id: "photo-upload"
+  %br
   = f.button :submit, class: "btn btn-primary"

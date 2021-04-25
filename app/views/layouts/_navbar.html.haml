@@ -1,19 +1,24 @@
 %nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.container
   %a.navbar-brand.js-scroll-trigger{:href => "/"}
-    = image_tag "Josh.png", {:style => "height:25px;"}
+    = image_tag "tieb-logo.png", {:style => "height:25px;"}
+    TIEB
   %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
     Menu
     %i.fas.fa-bars
   #navbarResponsive.collapse.navbar-collapse
     %ul.navbar-nav.ml-auto
-      - if @cart
-        %li.nav-item
-          %a.nav-link.js-scroll-trigger{:href => "#{cart_path(@cart)}"}
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            %span.badge.badge-danger.nav-cart= @cart.count_menu_items unless @cart.count_menu_items == 0
-            Cart
       %li.nav-item
         %a.nav-link.js-scroll-trigger{:href => "/"}  Home
+      %li.nav-item
+        %a.nav-link.js-scroll-trigger{:href => menu_items_path} Menu  
+      %li.nav-item
+        = link_to "Orders", orders_path, class: 'nav-link js-scroll-trigger'
+      - if current_admin&.cart
+        %li.nav-item
+          %a.nav-link.js-scroll-trigger{:href => "#{cart_path(current_admin.cart)}"}
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            %span.badge.badge-danger.nav-cart= current_admin.cart.count_menu_items unless current_admin.cart.count_menu_items == 0
+            Cart
       - unless admin_signed_in?
         %li.nav-item
           %a.nav-link.js-scroll-trigger{:href => "http://rohit-profile.herokuapp.com", target: "_blank"} About Me
